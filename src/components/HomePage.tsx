@@ -361,7 +361,9 @@ const AboutCare = () => {
                       data-aos="fade-left"
                       data-aos-delay="200"
                       className="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
-                       Todos nossos médicos fazem avaliações com total atenção aos seus sintomas, oferecem orientações claras e cuidadosas e, sempre que necessário, emitem pedidos e receitas de forma segura e personalizada.
+                       "Estamos aqui para cuidar de você e da sua família com todo carinho e responsabilidade. Nosso atendimento é focado em saúde primária de baixa complexidade, com clínicos gerais [generalistas], que atendem desde crianças à idosos. 
+
+Todos nossos médicos fazem avaliações com total atenção aos seus sintomas, oferecem orientações claras e cuidadosas e, sempre que necessário, emitem pedidos e receitas de forma segura e personalizada.
 Porque a sua saúde — e a de quem você ama — merece atenção de verdade."
                     </p>
                     <div 
@@ -536,8 +538,8 @@ const DynamicPricing = () => {
                     }))
                 ];
 
-                console.log('✅ Dados MOCK carregados:', mockPlans);
-                console.log('📋 Total de planos mock:', mockPlans.length);
+                // console.log('✅ Dados MOCK carregados:', mockPlans);
+                // console.log('📋 Total de planos mock:', mockPlans.length);
                 setPlans(mockPlans);
 
             } catch (error) {
@@ -552,7 +554,7 @@ const DynamicPricing = () => {
     }, []);
 
     const filteredPlans = useMemo(() => {
-        console.log('🔎 Filtrando planos...', { totalPlans: plans.length, selectedCycle });
+        // console.log('🔎 Filtrando planos...', { totalPlans: plans.length, selectedCycle });
         const filtered = plans?.filter((item) => {
             const isActive = Boolean(item?.active) === true;
             const isPlanActive = Boolean(item?.plan?.active) === true;
@@ -573,17 +575,17 @@ const DynamicPricing = () => {
             return isActive && isPlanActive && isExternalId && isCycleMatch && isOutdoorEnvironment;
         }) || [];
 
-        console.log('✅ Planos filtrados:', filtered.length, filtered);
+        // console.log('✅ Planos filtrados:', filtered.length, filtered);
         return filtered;
     }, [plans, selectedCycle]);
 
     const handleOpenModal = useCallback((plan: ClinicPlan) => {
-        console.log('🔔 Abrindo modal para plano:', plan);
+        // console.log('🔔 Abrindo modal para plano:', plan);
         setSelectedPlanForPurchase(plan);
         setIsModalOpen(true);
     }, []);
 
-    console.log('🎨 Renderizando DynamicPricing:', { isLoading, plansCount: filteredPlans.length });
+    // console.log('🎨 Renderizando DynamicPricing:', { isLoading, plansCount: filteredPlans.length });
 
     return (
         <>
@@ -612,7 +614,7 @@ const DynamicPricing = () => {
                     <div className="flex justify-center mb-8 gap-4">
                         <button
                             onClick={() => {
-                                console.log('📱 Selecionando ciclo: mensal');
+                                // console.log('📱 Selecionando ciclo: mensal');
                                 setSelectedCycle('mensal');
                             }}
                             className={`px-8 py-3 font-bold text-lg rounded-full transition-all ${
@@ -625,7 +627,7 @@ const DynamicPricing = () => {
                         </button>
                         <button
                             onClick={() => {
-                                console.log('📱 Selecionando ciclo: anual');
+                                // console.log('📱 Selecionando ciclo: anual');
                                 setSelectedCycle('anual');
                             }}
                             className={`px-8 py-3 font-bold text-lg rounded-full transition-all ${
