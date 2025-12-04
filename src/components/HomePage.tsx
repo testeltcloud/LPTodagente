@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {FaStar, FaPlus, FaClock, FaMoneyBillWave, FaNewspaper, FaHeart, FaUserPlus, FaDesktop, FaUser, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import {  Check } from 'lucide-react';
+import { FaStar, FaPlus, FaClock, FaMoneyBillWave, FaNewspaper, FaHeart, FaUserPlus, FaDesktop, FaUser} from 'react-icons/fa';
+import { Check } from 'lucide-react';
 // import { listPlansWithouToken } from '../services/plan.service'; // COMENTADO: usando dados mock
 import type { ClinicPlan } from '../types/plan.types';
 import PurchaseModal from './PurchaseModal';
@@ -16,195 +16,197 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import '../styles/swiper-custom.css';
 import Footer from './Footer';
+import YouTubeCarousel from './YouTubeCarousel';
 
 const Hero = () => {
-  return (
-    <section
-      data-aos="fade-in"
-      data-aos-duration="1000"
-      className="relative pt-1 md:pt-2 pb-4 md:pb-0 overflow-hidden mx-2 my-2 md:mx-5 md:my-5 xl:mx-auto xl:my-5 rounded-xl md:rounded-2xl xl:max-w-[95vw] min-h-screen lg:min-h-[90vh]"
-      style={{
-        backgroundImage: 'url(https://themes.muffingroup.com/be/doctor/wp-content/uploads/2022/10/bedoctor-section-bg1.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 max-w-[1600px] h-full flex flex-col">
+    return (
+        <section
+            data-aos="fade-in"
+            data-aos-duration="1000"
+            className="relative pt-1 md:pt-2 pb-4 md:pb-0 overflow-hidden mx-2 my-2 md:mx-5 md:my-5 xl:mx-auto xl:my-5 rounded-xl md:rounded-2xl xl:max-w-[95vw] min-h-screen lg:min-h-[90vh]"
+            style={{
+                backgroundImage: 'url(https://themes.muffingroup.com/be/doctor/wp-content/uploads/2022/10/bedoctor-section-bg1.webp)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }}
+        >
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 max-w-[1600px] h-full flex flex-col">
 
-        {/* --- TOPO: Logótipos e Contacto --- */}
-        <div className="md:flex-row justify-between items-center md:items-center pt-1 md:pt-2 pb-3 md:pb-4 lg:pb-2 flex-shrink-0">
-          {/* Lado Esquerdo: Logos */}
-          <div className="flex flex-col md:flex-row gap-3 md:gap-1 mb-2 md:mb-3 lg:mb-0 items-center md:items-end md:justify-evenly">
-            {/* Logo Principal */}
-            <img
-              className="object-contain w-auto h-[120px] md:h-[170px] md:w-[250px] xl:w-[300px]"
-              src="https://api.todagentesaude.com/images/todagente/clinic/clinicLogo1729186149170.png"
-              alt="Toda Gente Telemedicina"
-            />
-            {/* Parceiros (Norte 2030 + EU) */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 md:mb-4 md:-ml-4">
-              <a
-                href="https://todagentetelemedicina.com/wp-content/uploads/2025/08/SantosLotti_Ficha-de-Operacao.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <img
-                  src="https://todagentetelemedicina.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-15.47.55.jpeg"
-                  alt="Norte 2030"
-                  className="w-full max-w-[200px] md:max-w-[400px] xl:max-w-[500px] h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                  style={{borderRadius: "20px"}}
-                />
-              </a>
+                {/* --- TOPO: Logótipos e Contacto --- */}
+                <div className="md:flex-row justify-between items-center md:items-center pt-1 md:pt-2 pb-3 md:pb-4 lg:pb-2 flex-shrink-0">
+                    {/* Lado Esquerdo: Logos */}
+                    <div className="flex flex-col md:flex-row gap-3 md:gap-1 mb-2 md:mb-3 lg:mb-0 items-center md:items-end md:justify-evenly">
+                        {/* Logo Principal */}
+                        <img
+                            className="object-contain w-auto h-[120px] md:h-[170px] md:w-[250px] xl:w-[300px]"
+                            src="https://api.todagentesaude.com/images/todagente/clinic/clinicLogo1729186149170.png"
+                            alt="Toda Gente Telemedicina"
+                        />
+                        {/* Parceiros (Norte 2030 + EU) */}
+                        <div className="flex items-center justify-center lg:justify-start gap-3 md:mb-4 md:-ml-4">
+                            <a
+                                href="https://todagentetelemedicina.com/wp-content/uploads/2025/08/SantosLotti_Ficha-de-Operacao.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block"
+                            >
+                                <img
+                                    src="https://todagentetelemedicina.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-15-at-15.47.55.jpeg"
+                                    alt="Norte 2030"
+                                    className="w-full max-w-[200px] md:max-w-[400px] xl:max-w-[500px] h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                                    style={{ borderRadius: "20px" }}
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* --- CONTEÚDO PRINCIPAL --- */}
+                <div className="grid lg:grid-cols-[1.2fr_0.8fr] xl:grid-cols-[1.3fr_0.7fr] gap-4 md:gap-8 lg:gap-6 xl:gap-8 items-stretch flex-grow mt-4 lg:mt-0">
+
+                    {/* Coluna Esquerda: Texto e Botões */}
+                    <div className="lg:order-1 pb-4 md:pb-8 lg:pb-0 text-center lg:text-left flex flex-col justify-center">
+                        <h1
+                            data-aos="fade-up"
+                            data-aos-delay="200"
+                            className="text-4xl md:text-5xl lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.0rem] font-bold leading-[1.15] mb-2 md:mb-4">
+                            O Seu <span className="text-[#3B5CCC]">Médico de<br />Confiança</span> em<br />Portugal!
+                        </h1>
+
+                        <p
+                            data-aos="fade-up"
+                            data-aos-delay="400"
+                            className="text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-3 md:mb-5 leading-relaxed max-w-md xl:max-w-xl 2xl:max-w-2xl mx-auto lg:mx-0">
+                            Telemedicina 24h por dia, com clínicos gerais registrados pelo SNS e consultas ilimitadas. Receitas válidas em todo Portugal.
+                        </p>
+
+                        {/* Botões */}
+                        <div
+                            data-aos="fade-up"
+                            data-aos-delay="600"
+                            className="flex flex-col sm:flex-row gap-3 md:gap-4 xl:gap-6 mb-4 md:mb-6 justify-center lg:justify-start">
+                            <a href="#planos" className="bg-[#3B5CCC] text-white font-bold py-3 md:py-4 xl:py-5 px-6 md:px-7 xl:px-9 rounded-full text-center transition-all hover:bg-[#2E4AA3] shadow-lg hover:shadow-xl text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap">
+                                Aderir agora desde 6,99€/mês
+                            </a>
+                            <a href="#beneficios" className="bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20 font-semibold py-3 md:py-4 xl:py-5 px-6 md:px-7 xl:px-9 rounded-full text-center transition-all hover:border-[#3B5CCC] hover:bg-gray-50 shadow-sm text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap">
+                                Ver Benefícios
+                            </a>
+                        </div>
+
+                        {/* Lista de Benefícios */}
+                        <ul
+                            data-aos="fade-up"
+                            data-aos-delay="800"
+                            className="space-y-2 md:space-y-3 xl:space-y-4 text-gray-800 mb-4 md:mb-6 text-sm md:text-base lg:text-lg xl:text-xl inline-block text-center lg:text-left mx-auto lg:mx-0">
+                            <li className="flex items-start">
+                                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
+                                <span>Médicos Certificados em Portugal pelo SNS.</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
+                                <span>Receitas via SMS e E-mail válidas em todo o país</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
+                                <span>Atendimentos em até 15 minutos</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
+                                <span>+3500 pessoas já atendidas</span>
+                            </li>
+                        </ul>
+
+                        {/* Ícones de Pagamento/Segurança */}
+                        <div
+                            data-aos="fade-up"
+                            data-aos-delay="1000"
+                            style={{ justifyContent: "revert-layer" }}
+                            className="flex items-center gap-5 xl:gap-7 justify-center lg:justify-start">
+                            <img src="/images/2025/10/stripe.webp" alt="Stripe" className="h-10 md:h-15 xl:h-20 w-auto  transition-all" />
+                            <img src="/images/2025/10/rgpd.webp" alt="RGPD" className="h-10 md:h-15 xl:h-20 w-auto  transition-all" />
+                        </div>
+                    </div>
+
+                    {/* Coluna Direita: Imagem da Médica - SEM CORTES E RESPONSIVA */}
+                    <div
+                        data-aos="fade-left"
+                        data-aos-delay="400"
+                        className="hidden lg:block order-1 lg:order-2 relative">
+                        <div className="relative w-full h-full flex items-end justify-end">
+                            <img
+                                src="/images/2025/10/medicaaa-768x1200.webp"
+                                alt="Médica com telemóvel"
+                                className="w-auto h-[100%] max-h-[1000px] object-contain object-bottom"
+                                style={{
+                                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.1))',
+                                }}
+                            />
+                        </div>
+                    </div>
+
+                </div>
             </div>
-          </div>
-        </div>
-
-        {/* --- CONTEÚDO PRINCIPAL --- */}
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] xl:grid-cols-[1.3fr_0.7fr] gap-4 md:gap-8 lg:gap-6 xl:gap-8 items-stretch flex-grow mt-4 lg:mt-0">
-
-          {/* Coluna Esquerda: Texto e Botões */}
-          <div className="lg:order-1 pb-4 md:pb-8 lg:pb-0 text-center lg:text-left flex flex-col justify-center">
-            <h1 
-              data-aos="fade-up"
-              data-aos-delay="200"
-              className="text-4xl md:text-5xl lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.0rem] font-bold leading-[1.15] mb-2 md:mb-4">
-              O Seu <span className="text-[#3B5CCC]">Médico de<br/>Confiança</span> em<br/>Portugal!
-            </h1>
-
-            <p 
-              data-aos="fade-up"
-              data-aos-delay="400"
-              className="text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 mb-3 md:mb-5 leading-relaxed max-w-md xl:max-w-xl 2xl:max-w-2xl mx-auto lg:mx-0">
-              Telemedicina 24h por dia, com clínicos gerais registrados pelo SNS e consultas ilimitadas. Receitas válidas em todo Portugal.
-            </p>
-
-            {/* Botões */}
-            <div 
-              data-aos="fade-up"
-              data-aos-delay="600"
-              className="flex flex-col sm:flex-row gap-3 md:gap-4 xl:gap-6 mb-4 md:mb-6 justify-center lg:justify-start">
-              <a href="#planos" className="bg-[#3B5CCC] text-white font-bold py-3 md:py-4 xl:py-5 px-6 md:px-7 xl:px-9 rounded-full text-center transition-all hover:bg-[#2E4AA3] shadow-lg hover:shadow-xl text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap">
-                Aderir agora desde 6,99€/mês
-              </a>
-              <a href="#beneficios" className="bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20 font-semibold py-3 md:py-4 xl:py-5 px-6 md:px-7 xl:px-9 rounded-full text-center transition-all hover:border-[#3B5CCC] hover:bg-gray-50 shadow-sm text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap">
-                Ver Benefícios
-              </a>
-            </div>
-
-            {/* Lista de Benefícios */}
-            <ul
-              data-aos="fade-up"
-              data-aos-delay="800"
-              className="space-y-2 md:space-y-3 xl:space-y-4 text-gray-800 mb-4 md:mb-6 text-sm md:text-base lg:text-lg xl:text-xl inline-block text-center lg:text-left mx-auto lg:mx-0">
-              <li className="flex items-start">
-                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
-                <span>Médicos Certificados em Portugal pelo SNS.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
-                <span>Receitas via SMS e E-mail válidas em todo o país</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
-                <span>Atendimentos em até 15 minutos</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-500 text-lg md:text-xl xl:text-2xl mr-3 mt-0.5">●</span>
-                <span>+3500 pessoas já atendidas</span>
-              </li>
-            </ul>
-
-            {/* Ícones de Pagamento/Segurança */}
-            <div 
-              data-aos="fade-up"
-              data-aos-delay="1000"
-              style={{ justifyContent: "revert-layer"}}
-              className="flex items-center gap-5 xl:gap-7 justify-center lg:justify-start">
-              <img src="/images/2025/10/stripe.webp" alt="Stripe" className="h-10 md:h-15 xl:h-20 w-auto  transition-all"  />
-              <img src="/images/2025/10/rgpd.webp" alt="RGPD" className="h-10 md:h-15 xl:h-20 w-auto  transition-all" />
-            </div>
-          </div>
-
-          {/* Coluna Direita: Imagem da Médica - SEM CORTES E RESPONSIVA */}
-          <div 
-            data-aos="fade-left"
-            data-aos-delay="400"
-            className="hidden lg:block order-1 lg:order-2 relative">
-            <div className="relative w-full h-full flex items-end justify-end">
-              <img
-                src="/images/2025/10/medicaaa-768x1200.webp"
-                alt="Médica com telemóvel"
-                className="w-auto h-[100%] max-h-[1000px] object-contain object-bottom"
-                style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.1))',
-                }}
-              />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 const HowItWorks = () => {
     const steps = [
+      
         {
             number: 1,
-            title: 'Adere ao Plano',
-            description: '<b>Mensal</b> ou <b>Anual</b>.<br/><b>Individual</b> ou <b>Familiar</b>.<br/><br/>Você escolhe.<br/><br/>Planos a partir de <b>6,99€</b><br/><b>Consultas ilimitadas.</b>',
+            title: 'Acesso a Plataforma de Pronto Atendimento',
+            description: 'Após aderir e finalizar o pagamento, você receberá por <b>e-mail seus dados</b> de acesso.<br/><br/>Você poderá acessar via Web com seu login e senha ou pelo App. Após seguir as orientações de acesso, você poderá realizar atendimento no mesmo instante, sem carência alguma.',
             buttonText: 'Ver Planos',
             buttonLink: '#planos'
         },
         {
             number: 2,
-            title: 'Acesso a aplicação',
-            description: 'Depois de aderir, vais receber no teu <b>e-mail os dados</b> de acesso.<br/><br/>Depois de baixar, é só acessar e já tem acesso às consultas <b>em até 15 minutos</b>.',
-            buttonText: 'Ver Planos',
-            buttonLink: '#planos'
-        },
-        {
-            number: 3,
-            title: 'Receber orientação e receita quando aplicável',
+            title: 'Receber orientação e receita quando necessário',
             description: 'Nossos médicos avaliarão você e se necessário, sua receita é enviada por <b>e-mail</b>, <b>SMS</b>, e ficam disponíveis também no <b>app SNS24</b>.<br/><br/>As receitas são válidas em todo Portugal.',
             buttonText: 'Ver Planos',
             buttonLink: '#planos'
-        }
+        },
+          {
+            number: 3,
+            title: 'Adere ao Plano',
+            description: '<b>Mensal</b> ou <b>Anual</b>.<br/><b>Individual</b> ou <b>Familiar</b>.<br/><br/>Você escolhe.<br/><br/>Planos a partir de <b>6,99€</b><br/><b>Consultas ilimitadas.</b>',
+            buttonText: 'Ver Planos',
+            buttonLink: '#planos'
+        },
     ];
 
     return (
-      <React.Fragment>
-        <div 
-          data-aos="fade-down"
-          className="py-2 md:py-3" style={{background: '#0089F7'}}>
-          <h2 className="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold py-4 md:py-6">
-            Como Funciona?
-          </h2>
-        </div>
-        <section id="comofunciona" className="py-12 md:py-16 lg:py-20 bg-gray-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-5xl mx-auto">
-                    {steps.map((step, index) => (
-                      <div 
-                        key={step.number}
-                        data-aos="flip-up"
-                        data-aos-delay={index * 200}
-                        className="bg-white p-6 md:p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow flex flex-col items-center text-center">
-                            <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0089F7] mb-3 md:mb-4">{step.number}</div>
-                            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-3 md:mb-4">{step.title}</h3>
-                            <p className="text-gray-600 mb-4 md:mb-6 flex-grow leading-relaxed text-sm md:text-base" dangerouslySetInnerHTML={{ __html: step.description }}></p>
-                            <a href={step.buttonLink} className="mt-auto bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20 font-semibold py-2.5 md:py-3 px-6 md:px-8 rounded-full transition-all hover:bg-[#3B5CCC] hover:text-white hover:border-[#3B5CCC] text-sm md:text-base">
-                                {step.buttonText}
-                            </a>
-                        </div>
-                    ))}
-                </div>
+        <React.Fragment>
+            <div
+                data-aos="fade-down"
+                className="py-2 md:py-3" style={{ background: '#0089F7' }}>
+                <h2 className="text-white text-center text-2xl md:text-3xl lg:text-4xl font-bold py-4 md:py-6">
+                    Como Funciona?
+                </h2>
             </div>
-        </section>
-      </React.Fragment>
+            <section id="comofunciona" className="py-12 md:py-16 lg:py-20 bg-gray-50">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-5xl mx-auto">
+                        {steps.map((step, index) => (
+                            <div
+                                key={step.number}
+                                data-aos="flip-up"
+                                data-aos-delay={index * 200}
+                                className="bg-white p-6 md:p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow flex flex-col items-center text-center">
+                                <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0089F7] mb-3 md:mb-4">{step.number}</div>
+                                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800 mb-3 md:mb-4">{step.title}</h3>
+                                <p className="text-gray-600 mb-4 md:mb-6 flex-grow leading-relaxed text-sm md:text-base" dangerouslySetInnerHTML={{ __html: step.description }}></p>
+                                <a href={step.buttonLink} className="mt-auto bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20 font-semibold py-2.5 md:py-3 px-6 md:px-8 rounded-full transition-all hover:bg-[#3B5CCC] hover:text-white hover:border-[#3B5CCC] text-sm md:text-base">
+                                    {step.buttonText}
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </React.Fragment>
     );
 };
 
@@ -249,24 +251,24 @@ const Benefits = () => {
     ];
 
     return (
-        <section id="beneficios" className="py-16 md:py-20" style={{background: '#3B5CCC'}}>
+        <section id="beneficios" className="py-16 md:py-20" style={{ background: '#3B5CCC' }}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 
-                  data-aos="fade-up"
-                  className="text-3xl md:text-4xl font-bold text-white mb-4">Benefícios</h2>
-                <p 
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                  className="text-base md:text-lg text-white/90 mb-12 max-w-2xl mx-auto">
+                <h2
+                    data-aos="fade-up"
+                    className="text-3xl md:text-4xl font-bold text-white mb-4">Benefícios</h2>
+                <p
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    className="text-base md:text-lg text-white/90 mb-12 max-w-2xl mx-auto">
                     Conheça aqui alguns benefícios de utilizar o Toda Gente
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                     {benefitsList.map((benefit, index) => (
-                        <div 
-                          key={index}
-                          data-aos="zoom-in"
-                          data-aos-delay={index * 100}
-                          className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
+                        <div
+                            key={index}
+                            data-aos="zoom-in"
+                            data-aos-delay={index * 100}
+                            className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
                             <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl text-white flex-shrink-0">
                                 {benefit.icon}
                             </div>
@@ -282,208 +284,208 @@ const Benefits = () => {
     );
 };
 interface AnimatedCounterProps {
-  end: number;
-  duration?: number;
+    end: number;
+    duration?: number;
 }
 const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ end, duration = 10000 }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+    const [count, setCount] = useState(0);
+    const ref = useRef<HTMLSpanElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.5 } // Começa quando 50% do elemento estiver visível
-    );
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.5 } // Começa quando 50% do elemento estiver visível
+        );
 
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
+        if (ref.current) observer.observe(ref.current);
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
+    }, []);
 
-  useEffect(() => {
-    if (!isVisible) return;
-    
-    let current = 0;
-    const timer = setInterval(() => {
-      // Aceleração para chegar em 3500 suavemente
-      current += Math.ceil(end / (duration / 20)); 
-      
-      if (current >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(current);
-      }
-    }, 20);
+    useEffect(() => {
+        if (!isVisible) return;
 
-    return () => clearInterval(timer);
-  }, [end, duration, isVisible]);
+        let current = 0;
+        const timer = setInterval(() => {
+            // Aceleração para chegar em 3500 suavemente
+            current += Math.ceil(end / (duration / 20));
 
-  return <span ref={ref}>{count}</span>;
+            if (current >= end) {
+                setCount(end);
+                clearInterval(timer);
+            } else {
+                setCount(current);
+            }
+        }, 20);
+
+        return () => clearInterval(timer);
+    }, [end, duration, isVisible]);
+
+    return <span ref={ref}>{count}</span>;
 };
 
 // 2. Componente Principal
 const AboutCare = () => {
-  // Representa o número total de estrelas
-  const totalStars = 5; 
-  // Representa as 4 estrelas preenchidas
-  const filledStars = 4; 
-  // Array para iterar
-  const stars = Array.from({ length: totalStars }, (_, i) => i); 
-
-  return (
-    <section className="py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-                <div 
-                  data-aos="fade-right"
-                  className="lg:col-span-2">
-                    <img
-                        // Certifique-se de que este caminho de imagem está correto
-                        src="/images/2025/11/LEK1876-1.png"
-                        alt="Médica Toda Gente"
-                        className="rounded-2xl shadow-xl w-full h-auto"
-                    />
-                </div>
-                <div className="lg:col-span-3">
-                    <h2 
-                      data-aos="fade-left"
-                      className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                        Cuidado para todos
-                    </h2>
-                    <p 
-                      data-aos="fade-left"
-                      data-aos-delay="200"
-                      className="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
-                       "Estamos aqui para cuidar de você e da sua família com todo carinho e responsabilidade. Nosso atendimento é focado em saúde primária de baixa complexidade, com clínicos gerais [generalistas], que atendem desde crianças à idosos. 
-
-Todos nossos médicos fazem avaliações com total atenção aos seus sintomas, oferecem orientações claras e cuidadosas e, sempre que necessário, emitem pedidos e receitas de forma segura e personalizada.
-Porque a sua saúde — e a de quem você ama — merece atenção de verdade."
-                    </p>
-                    <div 
-                      data-aos="fade-left"
-                      data-aos-delay="400"
-                      className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
-                        
-                        {/* Seção Pessoas Atendidas */}
-                        <div className="flex items-center gap-4">
-                            {/* Ícone de Usuário - Estilizado para se parecer com a imagem (ícone simples, azul) */}
-                            {/* Removido o bg-blue-50 e animate-pulse para maior fidelidade à imagem, mas mantive o FaUser como um ícone simples e azul como na imagem */}
-                            <div className="text-[#3B5CCC] text-3xl"> 
-                                <FaUser />
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-gray-800 flex items-center">
-                                    {/* Implementação do Contador */}
-                                    <AnimatedCounter end={3500} duration={1500} />
-                                    <span className="text-gray-800 ml-1">+</span> {/* Cor do '+' alterada para gray-800 para corresponder à imagem */}
-                                </div>
-                                <p className="text-gray-600 text-sm">Pessoas atendidas</p>
-                            </div>
-                        </div>
-
-                        {/* Seção Estrelas e Soluções */}
-                        <div className="ml-0 sm:ml-8"> {/* Adicionado margem para separação em telas maiores */}
-                            <p className="font-medium text-gray-700 mb-2 text-sm">+ de 95% de atendimentos solucionados</p>
-                            <div className="flex gap-1 items-center">
-                                {/* Animação sequencial nas estrelas */}
-                                {stars.map((index) => (
-                                    <div 
-                                        key={index}
-                                        data-aos="zoom-in"
-                                        data-aos-delay={500 + (index * 100)} 
-                                        data-aos-anchor-placement="top-bottom"
-                                        // Estilização condicional da cor para 4 preenchidas e 1 vazia (cinza)
-                                        className={`text-xl ${index < filledStars ? 'text-blue-500' : 'text-gray-300'}`} 
-                                        // A imagem usa estrelas azuis e não amarelas, e a estrela vazia é cinza.
-                                        // Removido o estilo inline complexo de fundo e borderRadius
-                                    >
-                                        <FaStar className="w-6 h-6" /> {/* Ajustado tamanho do ícone, removido hover */}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Botão Ver Planos */}
-                    <a
-                        data-aos="fade-left"
-                        data-aos-delay="800"
-                        href="#planos"
-                        // Cor do botão verde e arredondamento total
-                        className="bg-[#4CAF50] text-white font-bold py-3 px-8 rounded-full transition-all hover:bg-[#45a049] shadow-lg hover:shadow-xl inline-block text-lg"
-                    >
-                        Ver Planos
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-  );
-};
-
-const Testimonials = () => {
-    const testimonialsList = [
-        { videoUrl: 'https://www.youtube.com/shorts/43Uu94OlG1g', thumb: '/images/2025/11/FERNANDA-2.webp' },
-        { videoUrl: 'https://www.youtube.com/shorts/kR5dCwicp6c', thumb: '/images/2025/11/MARINA-2.webp' },
-        { videoUrl: 'https://www.youtube.com/shorts/sSstdtnF61k', thumb: '/images/2025/11/NICOLLY-2.webp' },
-    ];
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const goToNext = () => setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsList.length);
-    const goToPrev = () => setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialsList.length) % testimonialsList.length);
+    // Representa o número total de estrelas
+    const totalStars = 5;
+    // Representa as 4 estrelas preenchidas
+    const filledStars = 4;
+    // Array para iterar
+    const stars = Array.from({ length: totalStars }, (_, i) => i);
 
     return (
-        <section className="py-20 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 
-                  data-aos="fade-up"
-                  className="text-3xl font-bold text-gray-800 mb-2">Experiências reais de quem confia no Toda Gente</h2>
-                <p 
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                  className="text-gray-600 mb-8">CLIQUE E ASSISTA!</p>
-                <div 
-                  data-aos="zoom-in"
-                  data-aos-delay="400"
-                  className="relative max-w-4xl mx-auto">
-                    <button onClick={goToPrev} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10">
-                        <FaChevronLeft />
-                    </button>
-                    <div className="overflow-hidden">
-                        <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                            {testimonialsList.map((testimonial, index) => (
-                                <div key={index} className="w-full flex-shrink-0">
-                                    <a href={testimonial.videoUrl} target="_blank" rel="noopener noreferrer">
-                                        <img src={testimonial.thumb} alt={`Testimonial ${index + 1}`} className="w-full rounded-lg shadow-lg" />
-                                    </a>
-                                </div>
-                            ))}
-                        </div>
+        <section className="py-16 md:py-20 bg-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+                    <div
+                        data-aos="fade-right"
+                        className="lg:col-span-2">
+                        <img
+                            // Certifique-se de que este caminho de imagem está correto
+                            src="/images/2025/11/LEK1876-1.png"
+                            alt="Médica Toda Gente"
+                            className="rounded-2xl shadow-xl w-full h-auto"
+                        />
                     </div>
-                    <button onClick={goToNext} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10">
-                        <FaChevronRight />
-                    </button>
-                     <div className="flex justify-center mt-4 space-x-2">
-                        {testimonialsList.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentIndex(index)}
-                                className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-blue-600' : 'bg-gray-300'}`}
-                            ></button>
-                        ))}
+                    <div className="lg:col-span-3">
+                        <h2
+                            data-aos="fade-left"
+                            className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                            Cuidado para todos
+                        </h2>
+                        <p
+                            data-aos="fade-left"
+                            data-aos-delay="200"
+                            className="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
+                            Estamos aqui para cuidar de você e da sua família com todo carinho e responsabilidade. Nosso atendimento é focado em saúde primária de baixa complexidade, com clínicos gerais [generalistas], que atendem desde crianças à idosos.
+
+                            Todos nossos médicos fazem avaliações com total atenção aos seus sintomas, oferecem orientações claras e cuidadosas e, sempre que necessário, emitem pedidos e receitas de forma segura e personalizada.
+                            Porque a sua saúde — e a de quem você ama — merece atenção de verdade.
+                        </p>
+                        <div
+                            data-aos="fade-left"
+                            data-aos-delay="400"
+                            className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
+
+                            {/* Seção Pessoas Atendidas */}
+                            <div className="flex items-center gap-4">
+                                {/* Ícone de Usuário - Estilizado para se parecer com a imagem (ícone simples, azul) */}
+                                {/* Removido o bg-blue-50 e animate-pulse para maior fidelidade à imagem, mas mantive o FaUser como um ícone simples e azul como na imagem */}
+                                <div className="text-[#3B5CCC] text-3xl">
+                                    <FaUser />
+                                </div>
+                                <div>
+                                    <div className="text-4xl font-bold text-gray-800 flex items-center">
+                                        {/* Implementação do Contador */}
+                                        <AnimatedCounter end={3500} duration={1500} />
+                                        <span className="text-gray-800 ml-1">+</span> {/* Cor do '+' alterada para gray-800 para corresponder à imagem */}
+                                    </div>
+                                    <p className="text-gray-600 text-sm">Pessoas atendidas</p>
+                                </div>
+                            </div>
+
+                            {/* Seção Estrelas e Soluções */}
+                            <div className="ml-0 sm:ml-8"> {/* Adicionado margem para separação em telas maiores */}
+                                <p className="font-medium text-gray-700 mb-2 text-sm">+ de 95% de atendimentos solucionados</p>
+                                <div className="flex gap-1 items-center">
+                                    {/* Animação sequencial nas estrelas */}
+                                    {stars.map((index) => (
+                                        <div
+                                            key={index}
+                                            data-aos="zoom-in"
+                                            data-aos-delay={500 + (index * 100)}
+                                            data-aos-anchor-placement="top-bottom"
+                                            // Estilização condicional da cor para 4 preenchidas e 1 vazia (cinza)
+                                            className={`text-xl ${index < filledStars ? 'text-blue-500' : 'text-gray-300'}`}
+                                        // A imagem usa estrelas azuis e não amarelas, e a estrela vazia é cinza.
+                                        // Removido o estilo inline complexo de fundo e borderRadius
+                                        >
+                                            <FaStar className="w-6 h-6" /> {/* Ajustado tamanho do ícone, removido hover */}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Botão Ver Planos */}
+                        <a
+                            data-aos="fade-left"
+                            data-aos-delay="800"
+                            href="#planos"
+                            // Cor do botão verde e arredondamento total
+                            className="bg-[#4CAF50] text-white font-bold py-3 px-8 rounded-full transition-all hover:bg-[#45a049] shadow-lg hover:shadow-xl inline-block text-lg"
+                        >
+                            Ver Planos
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     );
 };
+
+// const Testimonials = () => {
+//     const testimonialsList = [
+//         { videoUrl: 'https://www.youtube.com/shorts/43Uu94OlG1g', thumb: '/images/2025/11/FERNANDA-2.webp' },
+//         { videoUrl: 'https://www.youtube.com/shorts/kR5dCwicp6c', thumb: '/images/2025/11/MARINA-2.webp' },
+//         { videoUrl: 'https://www.youtube.com/shorts/sSstdtnF61k', thumb: '/images/2025/11/NICOLLY-2.webp' },
+//     ];
+//     const [currentIndex, setCurrentIndex] = useState(0);
+
+//     const goToNext = () => setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsList.length);
+//     const goToPrev = () => setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialsList.length) % testimonialsList.length);
+
+//     return (
+//         <section className="py-20 bg-white">
+//             <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//                 <h2 
+//                   data-aos="fade-up"
+//                   className="text-3xl font-bold text-gray-800 mb-2">Experiências reais de quem confia no Toda Gente</h2>
+//                 <p 
+//                   data-aos="fade-up"
+//                   data-aos-delay="200"
+//                   className="text-gray-600 mb-8">CLIQUE E ASSISTA!</p>
+//                 <div 
+//                   data-aos="zoom-in"
+//                   data-aos-delay="400"
+//                   className="relative max-w-4xl mx-auto">
+//                     <button onClick={goToPrev} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10">
+//                         <FaChevronLeft />
+//                     </button>
+//                     <div className="overflow-hidden">
+//                         <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+//                             {testimonialsList.map((testimonial, index) => (
+//                                 <div key={index} className="w-full flex-shrink-0">
+//                                     <a href={testimonial.videoUrl} target="_blank" rel="noopener noreferrer">
+//                                         <img src={testimonial.thumb} alt={`Testimonial ${index + 1}`} className="w-full rounded-lg shadow-lg" />
+//                                     </a>
+//                                 </div>
+//                             ))}
+//                         </div>
+//                     </div>
+//                     <button onClick={goToNext} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10">
+//                         <FaChevronRight />
+//                     </button>
+//                      <div className="flex justify-center mt-4 space-x-2">
+//                         {testimonialsList.map((_, index) => (
+//                             <button
+//                                 key={index}
+//                                 onClick={() => setCurrentIndex(index)}
+//                                 className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-blue-600' : 'bg-gray-300'}`}
+//                             ></button>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
 
 // Componente de Planos Dinâmicos
 const DynamicPricing = () => {
@@ -617,11 +619,10 @@ const DynamicPricing = () => {
                                 // console.log('📱 Selecionando ciclo: mensal');
                                 setSelectedCycle('mensal');
                             }}
-                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${
-                                selectedCycle === 'mensal'
+                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${selectedCycle === 'mensal'
                                     ? 'bg-[#3B5CCC] text-white shadow-lg'
                                     : 'bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20'
-                            }`}
+                                }`}
                         >
                             Plano Mensal
                         </button>
@@ -630,11 +631,10 @@ const DynamicPricing = () => {
                                 // console.log('📱 Selecionando ciclo: anual');
                                 setSelectedCycle('anual');
                             }}
-                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${
-                                selectedCycle === 'anual'
+                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${selectedCycle === 'anual'
                                     ? 'bg-[#3B5CCC] text-white shadow-lg'
                                     : 'bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20'
-                            }`}
+                                }`}
                         >
                             Plano Anual
                         </button>
@@ -755,37 +755,37 @@ const DynamicPricing = () => {
 };
 
 const AboutUs = () => (
-    <section className="py-16 md:py-20" style={{background: '#4A4A4A'}}>
+    <section className="py-16 md:py-20" style={{ background: '#4A4A4A' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
                 <div>
-                    <h2 
-                      data-aos="fade-right"
-                      className="text-3xl md:text-4xl font-bold text-white mb-6">Sobre nós!</h2>
-                    <p 
-                      data-aos="fade-right"
-                      data-aos-delay="200"
-                      className="text-lg md:text-xl text-white font-semibold mb-6">
+                    <h2
+                        data-aos="fade-right"
+                        className="text-3xl md:text-4xl font-bold text-white mb-6">Sobre nós!</h2>
+                    <p
+                        data-aos="fade-right"
+                        data-aos-delay="200"
+                        className="text-lg md:text-xl text-white font-semibold mb-6">
                         Gostamos de cuidar das pessoas
                     </p>
-                    <p 
-                      data-aos="fade-right"
-                      data-aos-delay="400"
-                      className="text-white/90 mb-6 leading-relaxed">
+                    <p
+                        data-aos="fade-right"
+                        data-aos-delay="400"
+                        className="text-white/90 mb-6 leading-relaxed">
                         Somos uma plataforma portuguesa que une a confiança de um médico 24h online com rapidez exigida no dia a dia.
                     </p>
-                    <p 
-                      data-aos="fade-right"
-                      data-aos-delay="600"
-                      className="text-white/90 leading-relaxed">
+                    <p
+                        data-aos="fade-right"
+                        data-aos-delay="600"
+                        className="text-white/90 leading-relaxed">
                         Nosso corpo clínico é formado por médicos que valorizam a escuta e o atendimento humanizado com o paciente.
                     </p>
                 </div>
                 <div className="flex items-center">
-                    <p 
-                      data-aos="fade-left"
-                      data-aos-delay="400"
-                      className="text-white/90 leading-relaxed">
+                    <p
+                        data-aos="fade-left"
+                        data-aos-delay="400"
+                        className="text-white/90 leading-relaxed">
                         Nossas teleconsultas contam com 90% de índice de resolutividade e satisfação.<br /><br />
                         Com médicos legalmente registados em Portugal, equipe estável e atendimento humanizado, nós cuidamos de tua saúde com <strong className="text-white">verdade, tecnologia e presença.</strong>
                     </p>
@@ -800,7 +800,7 @@ const FAQ = () => {
         {
             number: "1",
             question: "Como funcionam as consultas online?",
-            answer: "Após aderir a um plano, pode solicitar uma consulta online a qualquer momento através do nosso app.<br/><br/>O processo é simples:<br/>1) Escolhe o motivo da consulta.<br/>2) Preenche os seus dados essenciais.<br/>3) Um médico de confiança entra em contacto por videochamada.<br/><br/>O tempo médio de espera é até 10 minutos, variando conforme a procura."
+            answer: "Após aderir a um plano, pode solicitar uma consulta online a qualquer momento através do nosso app.<br/><br/>O processo é simples:<br/>1) Escolhe o motivo da consulta.<br/>2) Preenche os seus dados essenciais.<br/>3) Passará pelo atendimento inicial em até 10 minutos.<br/>4) Será encaminhado ao corpo clínico no mesmo instante na mesma vídeo chamada, é só aguardar. <br/>O tempo médio de espera é até 10 minutos, variando conforme a procura."
         },
         {
             number: "2",
@@ -810,7 +810,7 @@ const FAQ = () => {
         {
             number: "3",
             question: "Que tipo de profissionais atendem?",
-            answer: "As consultas são realizadas por médicos com registo válido no SNS (Serviço Nacional de Saúde), experientes em Clínica Geral. Todos os profissionais passam por verificação documental e validação ética, garantindo segurança e confiança no atendimento."
+            answer: "As consultas são realizadas por médicos com registo válido no SNS (Serviço Nacional de Saúde), experientes em Clínica Geral [Generalistas] com atendimentos para qualquer idade, desde criança até idosos. Todos os profissionais passam por verificação documental e validação ética, garantindo segurança e confiança no atendimento."
         },
         {
             number: "4",
@@ -840,7 +840,7 @@ const FAQ = () => {
         {
             number: "9",
             question: "Como funciona o pagamento e a renovação?",
-            answer: "Os pagamentos são feitos de forma segura via Stripe, com renovação automática (mensal ou anual, conforme o plano escolhido). Pode gerir ou cancelar a subscrição a qualquer momento através da Área do Cliente."
+            answer: "Os pagamentos são feitos de forma segura via Stripe, com renovação automática (mensal ou anual, conforme o plano escolhido). Pode gerir ou cancelar a subscrição a qualquer momento entrando em contato pelo e-mail oficial. Atenção: caso o cancelamento ocorra antes do prazo de 06 meses de fidelidade, o valor proporcional é cobrado. Pode gerir ou cancelar a subscrição a qualquer momento através da Área do Cliente."
         },
         {
             number: "10",
@@ -855,7 +855,7 @@ const FAQ = () => {
         {
             number: "12",
             question: "Posso cancelar a qualquer momento?",
-            answer: "Sim. O cancelamento poderá ser solicitado a qualquer momento, porém, se fizer antes dos 06 meses iniciais a data de contratação, haverá uma multa, cujo valor será os meses restantes para completar 06 meses x o valor da mensalidade. Atenção ao procedimento para cancelamento. Deverá ser formalizado por e-mail para: cancelamento@todagentetelemedicina.com ."
+            answer: "Sim. O cancelamento poderá ser solicitado a qualquer momento, porém, se fizer antes dos 06 meses iniciais a data de contratação, haverá uma multa, cujo valor será os meses restantes para completar este prazo. Atenção ao procedimento para cancelamento. Deverá ser formalizado por e-mail para: cancelamento@todagentetelemedicina.com ."
         },
         {
             number: "13",
@@ -883,15 +883,15 @@ const FAQ = () => {
         <section id="faq" className="py-16 md:py-20 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
-                    <h2 
-                      data-aos="fade-up"
-                      className="text-3xl md:text-4xl font-bold text-[#3B5CCC] mb-4 text-center">
+                    <h2
+                        data-aos="fade-up"
+                        className="text-3xl md:text-4xl font-bold text-[#3B5CCC] mb-4 text-center">
                         Perguntas Frequentes
                     </h2>
-                    <p 
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                      className="text-base md:text-lg text-gray-600 mb-10 text-center">
+                    <p
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                        className="text-base md:text-lg text-gray-600 mb-10 text-center">
                         Ainda tem dúvidas?<br />
                         A gente esclarece tudo aqui:
                     </p>
@@ -948,7 +948,7 @@ const FAQ = () => {
 //                         <a href="https://www.facebook.com/todagentetelemedicina"
 //                         target="_blank"
 //                         rel="noopener noreferrer"
-                        
+
 //                         className="hover:text-white"><FaFacebook size={24} /></a>
 //                         <a href="https://www.instagram.com/stories/todagentetelemedicina/"
 //                         target="_blank"
@@ -1020,30 +1020,31 @@ const FAQ = () => {
 
 
 export default function HomePage() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: 'ease-out-cubic',
-    });
-  }, []);
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic',
+        });
+    }, []);
 
-  return (
-    <div className="bg-white font-sans">
-      {/* <Header /> */}
-      <main>
-        <Hero />
-        <HowItWorks />
-        <Benefits />
-        <AboutCare />
-        <Testimonials />
-        <DynamicPricing />
-        <AboutUs />
-        <FAQ />
-      </main>
-      {/* <Footer /> */}
-      < Footer/>
-      {/* <CookieBanner /> */}
-    </div>
-  );
+    return (
+        <div className="bg-white font-sans">
+            {/* <Header /> */}
+            <main>
+                <Hero />
+                <HowItWorks />
+                <Benefits />
+                <AboutCare />
+                <YouTubeCarousel />
+                {/* <Testimonials /> */}
+                <DynamicPricing />
+                <AboutUs />
+                <FAQ />
+            </main>
+            {/* <Footer /> */}
+            < Footer />
+            {/* <CookieBanner /> */}
+        </div>
+    );
 }
