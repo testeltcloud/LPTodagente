@@ -29,3 +29,37 @@ body {
   }
   
 }
+
+/* Ocultar scrollbar em todos os navegadores */
+body,
+.swiper,
+.plans-swiper,
+[data-scope="dialog"][data-part="body"] {
+  /* Firefox */
+  scrollbar-width: none;
+  
+  /* IE e Edge */
+  -ms-overflow-style: none;
+}
+
+/* Chrome, Safari e Opera */
+body::-webkit-scrollbar,
+.swiper::-webkit-scrollbar,
+.plans-swiper::-webkit-scrollbar,
+[data-scope="dialog"][data-part="body"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Se quiser ocultar em toda a página */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
