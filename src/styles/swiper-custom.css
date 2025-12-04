@@ -1,0 +1,189 @@
+/* Estilos customizados para o Swiper */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botões de navegação */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2e4392;
+  background: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #2e4392;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Paginação */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2e4392;
+  width: 30px;
+  border-radius: 6px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 35px;
+    height: 35px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 14px;
+  }
+}
+
+/* Ajustes para cards dos planos */
+.swiper-slide .plan-card {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Carrossel de Planos */
+.plans-swiper {
+  overflow: hidden;
+  position: relative;
+  padding: 0 55px;
+}
+
+.plans-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.plans-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.plans-swiper .swiper-slide > div {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .plans-swiper {
+    padding: 0 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plans-swiper {
+    padding: 0 42px;
+  }
+}
+
+/* Navegação customizada para planos */
+.plans-swiper .swiper-button-next,
+.plans-swiper .swiper-button-prev {
+  color: #3B5CCC;
+  background: white;
+  border: 2px solid #3B5CCC;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(59, 92, 204, 0.2);
+  z-index: 10;
+  position: absolute;
+}
+
+.plans-swiper .swiper-button-next {
+  right: 10px;
+}
+
+.plans-swiper .swiper-button-prev {
+  left: 10px;
+}
+
+.plans-swiper .swiper-button-next:hover,
+.plans-swiper .swiper-button-prev:hover {
+  background: #3B5CCC;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Responsivo para botões de navegação dos planos */
+@media (max-width: 1024px) {
+  .plans-swiper .swiper-button-next {
+    right: 5px;
+  }
+
+  .plans-swiper .swiper-button-prev {
+    left: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plans-swiper .swiper-button-next,
+  .plans-swiper .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  .plans-swiper .swiper-button-next {
+    right: 0px;
+  }
+
+  .plans-swiper .swiper-button-prev {
+    left: 0px;
+  }
+
+  .plans-swiper .swiper-button-next:after,
+  .plans-swiper .swiper-button-prev:after {
+    font-size: 16px;
+  }
+}
+
+/* Paginação customizada para planos */
+.plans-swiper .swiper-pagination {
+  bottom: -5px !important;
+}
+
+.plans-swiper .swiper-pagination-bullet {
+  background: #3B5CCC;
+  opacity: 0.3;
+}
+
+.plans-swiper .swiper-pagination-bullet-active {
+  background: #3B5CCC;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .plans-swiper .swiper-pagination {
+    display: none !important;
+  }
+}
