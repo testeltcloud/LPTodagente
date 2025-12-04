@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaFacebook, FaInstagram, FaYoutube,  FaStar, FaPlus, FaClock, FaMoneyBillWave, FaNewspaper, FaHeart, FaUserPlus, FaDesktop, FaUser, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {FaStar, FaPlus, FaClock, FaMoneyBillWave, FaNewspaper, FaHeart, FaUserPlus, FaDesktop, FaUser, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import {  Check } from 'lucide-react';
 // import { listPlansWithouToken } from '../services/plan.service'; // COMENTADO: usando dados mock
 import type { ClinicPlan } from '../types/plan.types';
@@ -15,6 +15,7 @@ import 'swiper/css/navigation';
 // @ts-expect-error - Swiper CSS imports
 import 'swiper/css/pagination';
 import '../styles/swiper-custom.css';
+import Footer from './Footer';
 
 const Hero = () => {
   return (
@@ -360,7 +361,8 @@ const AboutCare = () => {
                       data-aos="fade-left"
                       data-aos-delay="200"
                       className="text-base md:text-lg text-gray-700 mb-8 leading-relaxed">
-                        Cuidamos de você com Clínico Geral: avaliação de sintomas, orientações, pedidos e emissões de receitas quando clinicamente indicado.
+                       Todos nossos médicos fazem avaliações com total atenção aos seus sintomas, oferecem orientações claras e cuidadosas e, sempre que necessário, emitem pedidos e receitas de forma segura e personalizada.
+Porque a sua saúde — e a de quem você ama — merece atenção de verdade."
                     </p>
                     <div 
                       data-aos="fade-left"
@@ -858,11 +860,11 @@ const FAQ = () => {
             question: "Como funciona o método de cobrança?",
             answer: "No momento o método é somente via cartão de crédito e débito. Ao contratar o plano mensal ou anual, será debitado do seu cartão todos os meses o valor da mensalidade, correspondente ao plano contratado. Caso tenha interesse em cancelar, deverá realizar a solicitação formal para o e-mail: cancelamento@todagentetelemedicina.com . Caso não faça a solicitação formal, o valor será debitado automaticamente do cartão todos os meses."
         },
-        {
-            number: "14",
-            question: "Haverá estorno caso solicitar o cancelamento?",
-            answer: "Não. Não fazemos estorno de valores após contratação, exceto por motivos técnicos da plataforma, impossibilitando a utilização da mesma. Toda solicitação de cancelamento e estorno deverá ser realizada pelo e-mail: cancelamento@todagentetelemedicina.com."
-        },
+        // {
+        //     number: "14",
+        //     question: "Haverá estorno caso solicitar o cancelamento?",
+        //     answer: "Não. Não fazemos estorno de valores após contratação, exceto por motivos técnicos da plataforma, impossibilitando a utilização da mesma. Toda solicitação de cancelamento e estorno deverá ser realizada pelo e-mail: cancelamento@todagentetelemedicina.com."
+        // },
         {
             number: "15",
             question: "Haverá estorno caso solicitar o cancelamento?",
@@ -930,66 +932,66 @@ const FAQ = () => {
 };
 
 
-const Footer = () => (
-    <footer className="bg-[#004f9e] text-gray-300">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-                {/* Column 1: Logo and Social */}
-                <div 
-                  data-aos="fade-up"
-                  data-aos-delay="0"
-                  className="lg:col-span-2">
-                    <img src="/images/2025/11/logo-branca.png" alt="Toda Gente Logo" className="h-12 mb-6" />
-                    <div className="flex space-x-4">
-                        <a href="https://www.facebook.com/todagentetelemedicina"
-                        target="_blank"
-                        rel="noopener noreferrer"
+// const Footer = () => (
+//     <footer className="bg-[#004f9e] text-gray-300">
+//         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+//             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+//                 {/* Column 1: Logo and Social */}
+//                 <div 
+//                   data-aos="fade-up"
+//                   data-aos-delay="0"
+//                   className="lg:col-span-2">
+//                     <img src="/images/2025/11/logo-branca.png" alt="Toda Gente Logo" className="h-12 mb-6" />
+//                     <div className="flex space-x-4">
+//                         <a href="https://www.facebook.com/todagentetelemedicina"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
                         
-                        className="hover:text-white"><FaFacebook size={24} /></a>
-                        <a href="https://www.instagram.com/stories/todagentetelemedicina/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-white"><FaInstagram size={24} /></a>
-                        <a href="https://www.youtube.com/@TodaGenteTelemedicina" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-white">
-                        <FaYoutube size={24} /></a>
-                    </div>
-                </div>
+//                         className="hover:text-white"><FaFacebook size={24} /></a>
+//                         <a href="https://www.instagram.com/stories/todagentetelemedicina/"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="hover:text-white"><FaInstagram size={24} /></a>
+//                         <a href="https://www.youtube.com/@TodaGenteTelemedicina" 
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="hover:text-white">
+//                         <FaYoutube size={24} /></a>
+//                     </div>
+//                 </div>
 
-                {/* Column 2: Menu */}
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="200">
-                    <h6 className="font-bold text-white mb-4">Menu</h6>
-                    <ul className="space-y-2">
-                        <li><a href="#" className="hover:text-white">Home</a></li>
-                        <li><a href="#planos" className="hover:text-white">Planos</a></li>
-                        <li><a href="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</a></li>
-                        <li><a href="/politica-de-cookies" className="hover:text-white">Política de Cookies</a></li>
-                    </ul>
-                </div>
+//                 {/* Column 2: Menu */}
+//                 <div
+//                   data-aos="fade-up"
+//                   data-aos-delay="200">
+//                     <h6 className="font-bold text-white mb-4">Menu</h6>
+//                     <ul className="space-y-2">
+//                         <li><a href="#" className="hover:text-white">Home</a></li>
+//                         <li><a href="#planos" className="hover:text-white">Planos</a></li>
+//                         <li><a href="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</a></li>
+//                         <li><a href="/politica-de-cookies" className="hover:text-white">Política de Cookies</a></li>
+//                     </ul>
+//                 </div>
 
-                {/* Column 3: About Us */}
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay="400">
-                    <h6 className="font-bold text-white mb-4">Sobre Nós</h6>
-                    <p className="text-sm"><strong>Nº de Registo:</strong> 517741792</p>
-                    <p className="text-sm"><strong>ERS – Entidade Reguladora da Saúde Registro:</strong> 41567</p>
-                    <p className="text-sm mt-2">Lake Towers – Edifício D, R. Daciano Baptista Marques 245, 4400-617 - Vila Nova de Gaia, Portugal</p>
-                    <p className="text-sm mt-2">
-                        <a href="mailto:atendimento@todagentetelemedicina.com" className="hover:text-white">atendimento@todagentetelemedicina.com</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div className="bg-black text-center py-4">
-            <p className="text-sm text-gray-400">© 2025 Toda Gente Telemedicina | Todos os Direitos Reservados</p>
-        </div>
-    </footer>
-);
+//                 {/* Column 3: About Us */}
+//                 <div
+//                   data-aos="fade-up"
+//                   data-aos-delay="400">
+//                     <h6 className="font-bold text-white mb-4">Sobre Nós</h6>
+//                     <p className="text-sm"><strong>Nº de Registo:</strong> 517741792</p>
+//                     <p className="text-sm"><strong>ERS – Entidade Reguladora da Saúde Registro:</strong> 41567</p>
+//                     <p className="text-sm mt-2">Lake Towers – Edifício D, R. Daciano Baptista Marques 245, 4400-617 - Vila Nova de Gaia, Portugal</p>
+//                     <p className="text-sm mt-2">
+//                         <a href="mailto:atendimento@todagentetelemedicina.com" className="hover:text-white">atendimento@todagentetelemedicina.com</a>
+//                     </p>
+//                 </div>
+//             </div>
+//         </div>
+//         <div className="bg-black text-center py-4">
+//             <p className="text-sm text-gray-400">© 2025 Toda Gente Telemedicina | Todos os Direitos Reservados</p>
+//         </div>
+//     </footer>
+// );
 
 
 // const CookieBanner = () => {
@@ -1037,7 +1039,8 @@ export default function HomePage() {
         <AboutUs />
         <FAQ />
       </main>
-      <Footer />
+      {/* <Footer /> */}
+      < Footer/>
       {/* <CookieBanner /> */}
     </div>
   );
