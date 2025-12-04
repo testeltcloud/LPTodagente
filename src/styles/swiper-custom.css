@@ -188,4 +188,15 @@
   .plans-swiper .swiper-pagination {
     display: none !important;
   }
+
+  /* Fix modal mobile - remove margin/padding top */
+  [data-scope="dialog"][data-part="positioner"] {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  [data-scope="dialog"][data-part="content"] {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }

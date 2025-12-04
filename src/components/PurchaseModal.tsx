@@ -20,6 +20,7 @@ import { toaster } from '../components/ui/toaster'
 import TermsModal from './Modal/TermsModal'
 import WarningModal from './Modal/WarningModal'
 import axios from 'axios'
+import { getAffiliateCodeFromURL, getSavedAffiliateCode, saveAffiliateCode, checkAffiliateCode, type AffiliateCodeResponse } from '../services/affiliateCode.service'
 
 interface FormData {
   fullName: string
@@ -86,6 +87,10 @@ const [termsAccepted, setTermsAccepted] = useState(false);
 const [userIpAddress, setUserIpAddress] = useState<string>('');
 const [isSuccessCheck, setIsSuccessCheck] = useState(false);
 const [termsWereAccepted, setTermsWereAccepted] = useState(false);
+
+  // Estados para código de afiliado
+  const [affiliateData, setAffiliateData] = useState<AffiliateCodeResponse | null>(null);
+  const [isCheckingAffiliate, setIsCheckingAffiliate] = useState(false);
 
   const handleFullNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -196,6 +201,58 @@ const [termsWereAccepted, setTermsWereAccepted] = useState(false);
     setValidationStates((prev) => ({ ...prev, isCheckingEmail: false }))
   }
 }, [formData.email])
+
+  // Verifica código de afiliado quando o modal abre
+  useEffect(() => {
+    if (!isOpen) return
+
+    const checkAffiliate = async () => {
+      // Primeiro verifica se há código na URL
+      const urlCode = getAffiliateCodeFromURL()
+
+      if (urlCode) {
+        // Salva o código no localStorage
+        saveAffiliateCode(urlCode)
+        setIsCheckingAffiliate(true)
+
+        try {
+          const response = await checkAffiliateCode(urlCode)
+          setAffiliateData(response)
+
+          if (response.data.hasCoupon) {
+            toaster.create({
+              title: 'Cupom de Desconto Aplicado!',
+              description: `Código de afiliado ${response.data.affiliateCode} possui desconto.`,
+              type: 'success',
+              duration: 5000,
+            })
+          }
+        } catch (error) {
+          console.error('Erro ao verificar código de afiliado:', error)
+        } finally {
+          setIsCheckingAffiliate(false)
+        }
+        return
+      }
+
+      // Se não houver código na URL, verifica no localStorage
+      const savedCode = getSavedAffiliateCode()
+      if (savedCode) {
+        setIsCheckingAffiliate(true)
+
+        try {
+          const response = await checkAffiliateCode(savedCode)
+          setAffiliateData(response)
+        } catch (error) {
+          console.error('Erro ao verificar código de afiliado salvo:', error)
+        } finally {
+          setIsCheckingAffiliate(false)
+        }
+      }
+    }
+
+    checkAffiliate()
+  }, [isOpen])
 
   useEffect(() => {
     if (!isOpen) return
@@ -380,6 +437,9 @@ const handleAcceptTerms = useCallback(async () => {
             plan: externalId,
             holderId: holderId.toString(),
             idOrder: idOrder.toString(),
+            ...(affiliateData?.data?.affiliateCode && {
+              affiliateCode: affiliateData.data.affiliateCode
+            })
           });
 
           if (session?.data?.sessionId) {
@@ -443,7 +503,7 @@ const handleAcceptTerms = useCallback(async () => {
     setTermsWereAccepted(false);
     setShowTermsModal(false);
   }
-}, [formData, selectedPlan, onClose]);
+}, [formData, selectedPlan, onClose, affiliateData]);
 
 const handleRejectTerms = () => {
   if (!termsWereAccepted) {
@@ -476,6 +536,8 @@ useEffect(() => {
     setUserIpAddress('')
     setIsSubmitting(false)
     setTermsWereAccepted(false)
+    setAffiliateData(null)
+    setIsCheckingAffiliate(false)
   }
 }, [isOpen])
 
@@ -485,9 +547,42 @@ useEffect(() => {
     <>
     <Dialog.Root open={isOpen} onOpenChange={(e) => !e.open && onClose()} size="xl">
       <Dialog.Backdrop />
-      <Dialog.Positioner my={6}>
-        <Dialog.Content maxH="95vh" overflowY="auto" maxW="700px">
-          <Dialog.Header py={5} px={6} borderBottom="1px solid" borderColor="gray.200">
+      <Dialog.Positioner
+        position="fixed"
+        top={{ base: 0, md: '50%' }}
+        left={{ base: 0, md: '50%' }}
+        right={{ base: 0, md: 'auto' }}
+        bottom={{ base: 0, md: 'auto' }}
+        transform={{ base: 'none', md: 'translate(-50%, -50%)' }}
+        w={{ base: '100vw', md: 'auto' }}
+        h={{ base: '100vh', md: 'auto' }}
+        zIndex={1400}
+        p={0}
+        m={0}
+        display={{ base: 'block', md: 'flex' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        justifyContent={{ base: 'flex-start', md: 'center' }}
+      >
+        <Dialog.Content
+          h={{ base: '100vh', md: 'fit-content' }}
+          maxH={{ base: '100vh', md: '95vh' }}
+          minH={{ base: '100vh', md: 'auto' }}
+          w={{ base: '100vw', md: '700px' }}
+          maxW={{ base: '100vw', md: '700px' }}
+          borderRadius={{ base: 0, md: '12px' }}
+          overflowY="hidden"
+          display="flex"
+          flexDirection="column"
+          p={0}
+          m={0}
+        >
+          <Dialog.Header
+            py={5}
+            px={6}
+            borderBottom="1px solid"
+            borderColor="gray.200"
+            flexShrink={0}
+          >
             <Flex justify="space-between" align="center" w="100%" gap={4}>
               <Box>
                 <Image
@@ -514,8 +609,72 @@ useEffect(() => {
               <X size={24} />
             </Button>
           </Dialog.CloseTrigger>
-          <Dialog.Body py={6} px={6}>
+          <Dialog.Body
+            py={6}
+            px={6}
+            flex="1"
+            overflowY="auto"
+          >
             <VStack gap={5} align="stretch">
+              {/* Código de Afiliado */}
+              {affiliateData?.data?.hasCoupon && (
+                <Box
+                  bg={affiliateData?.data?.hasCoupon ? 'green.50' : 'blue.50'}
+                  borderWidth="2px"
+                  borderColor={affiliateData?.data?.hasCoupon ? 'green.400' : 'blue.400'}
+                  borderRadius="8px"
+                  p={4}
+                >
+                  <HStack gap={3} align="flex-start">
+                    {/* <Box
+                      as="span"
+                      fontSize="2xl"
+                      color={affiliateData.data.hasCoupon ? 'green.600' : 'blue.600'}
+                    >
+                      {affiliateData.data.hasCoupon ? '🎉' : 'ℹ️'}
+                    </Box> */}
+                    <VStack align="flex-start" gap={1} flex={1}>
+                      <Text
+                        fontSize="md"
+                        fontWeight="700"
+                        color={affiliateData.data.hasCoupon ? 'green.700' : 'blue.700'}
+                      >
+                        {affiliateData.data.hasCoupon
+                          ? 'Cupom de Desconto Aplicado!'
+                          : 'Código de Afiliado'}
+                      </Text>
+                      <Text fontSize="sm" color="gray.700">
+                        Código: <Text as="span" fontWeight="600">{affiliateData.data.affiliateCode}</Text>
+                        {affiliateData.data.affiliateName && (
+                          <> • Afiliado: {affiliateData.data.affiliateName}</>
+                        )}
+                      </Text>
+                      {affiliateData.data.hasCoupon && (
+                        <Text fontSize="xs" color="green.600" fontWeight="500">
+                          O desconto será aplicado automaticamente no pagamento
+                        </Text>
+                      )}
+                    </VStack>
+                  </HStack>
+                </Box>
+              )}
+
+              {/* Loading do código de afiliado */}
+              {isCheckingAffiliate && (
+                <Box
+                  bg="gray.50"
+                  borderWidth="2px"
+                  borderColor="gray.300"
+                  borderRadius="8px"
+                  p={4}
+                  textAlign="center"
+                >
+                  <Text fontSize="sm" color="gray.600">
+                    Verificando código de afiliado...
+                  </Text>
+                </Box>
+              )}
+
               <Box>
                 <Text fontSize="md" fontWeight="700" mb={2.5} color="gray.700">
                   Nome Completo *
@@ -687,7 +846,15 @@ useEffect(() => {
             </VStack>
           </Dialog.Body>
 
-          <Dialog.Footer flexDirection="column" gap={3} py={5} px={6} borderTop="1px solid" borderColor="gray.200">
+          <Dialog.Footer
+            flexDirection="column"
+            gap={3}
+            py={5}
+            px={6}
+            borderTop="1px solid"
+            borderColor="gray.200"
+            flexShrink={0}
+          >
             <Button
               onClick={handleSubmit}
               disabled={!isFormValid || isSubmitting}

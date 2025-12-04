@@ -24,6 +24,11 @@ export interface CreateSessionResponse {
   url: string
 }
 
-export async function createSession(body: { plan: string; holderId: string, idOrder: string }) {
+export async function createSession(body: {
+  plan: string;
+  holderId: string;
+  idOrder: string;
+  affiliateCode?: string;
+}) {
   return await api.post<CreateSessionResponse>('/auth/stripe/session', body);
 }
