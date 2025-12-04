@@ -564,17 +564,18 @@ useEffect(() => {
         justifyContent={{ base: 'flex-start', md: 'center' }}
       >
         <Dialog.Content
-          h={{ base: '100vh', md: 'fit-content' }}
+          h={{ base: '100vh', md: 'auto' }}
           maxH={{ base: '100vh', md: '95vh' }}
           minH={{ base: '100vh', md: 'auto' }}
           w={{ base: '100vw', md: '700px' }}
           maxW={{ base: '100vw', md: '700px' }}
           borderRadius={{ base: 0, md: '12px' }}
-          overflowY="hidden"
+          overflow="hidden"
           display="flex"
           flexDirection="column"
           p={0}
           m={0}
+          position="relative"
         >
           <Dialog.Header
             py={5}
@@ -614,6 +615,10 @@ useEffect(() => {
             px={6}
             flex="1"
             overflowY="auto"
+            overflowX="hidden"
+            css={{
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
             <VStack gap={5} align="stretch">
               {/* Código de Afiliado */}
@@ -645,9 +650,9 @@ useEffect(() => {
                       </Text>
                       <Text fontSize="sm" color="gray.700">
                         Código: <Text as="span" fontWeight="600">{affiliateData.data.affiliateCode}</Text>
-                        {affiliateData.data.affiliateName && (
+                        {/* {affiliateData.data.affiliateName && (
                           <> • Afiliado: {affiliateData.data.affiliateName}</>
-                        )}
+                        )} */}
                       </Text>
                       {affiliateData.data.hasCoupon && (
                         <Text fontSize="xs" color="green.600" fontWeight="500">
@@ -849,12 +854,16 @@ useEffect(() => {
           <Dialog.Footer
             flexDirection="column"
             gap={3}
-            py={{ base: 3, md: 5 }}
-            pb={{ base: 'calc(1rem + env(safe-area-inset-bottom))', md: 5 }}
+            pt={{ base: 4, md: 5 }}
+            pb={{ base: 'max(1.5rem, env(safe-area-inset-bottom))', md: 5 }}
             px={6}
             borderTop="1px solid"
             borderColor="gray.200"
             flexShrink={0}
+            position={{ base: 'sticky', md: 'relative' }}
+            bottom={{ base: 0, md: 'auto' }}
+            bg="white"
+            zIndex={10}
           >
             <Button
               onClick={handleSubmit}

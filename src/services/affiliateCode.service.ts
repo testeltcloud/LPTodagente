@@ -1,17 +1,17 @@
 // Mock de códigos de afiliados
 const mockAffiliateCodes = [
   // Códigos COM cupom de desconto
-  { code: 'AFILIADO001', hasCoupon: true, name: 'Teste 1' },
-  { code: 'AFILIADO002', hasCoupon: true, name: 'Teste 2' },
-  { code: 'DESCONTO10', hasCoupon: true, name: 'Teste 3' },
-  { code: 'PROMO2024', hasCoupon: true, name: 'Teste 4' },
-  { code: 'PARCEIRO01', hasCoupon: true, name: 'Teste 5' },
+  { code: 'AFILIADO001', hasCoupon: true,  },
+  { code: 'AFILIADO002', hasCoupon: true,  },
+  { code: 'DESCONTO10', hasCoupon: true,  },
+  { code: 'PROMO2024', hasCoupon: true,  },
+  { code: 'PARCEIRO01', hasCoupon: true,  },
 
   // Códigos SEM cupom de desconto
-  { code: 'AFILIADO003', hasCoupon: false, name: 'Teste 6' },
-  { code: 'AFILIADO004', hasCoupon: false, name: 'Teste 7' },
-  { code: 'PARCEIRO02', hasCoupon: false, name: 'Teste 8' },
-  { code: 'INDICACAO01', hasCoupon: false, name: 'Teste 9' },
+  { code: 'AFILIADO003', hasCoupon: false,  },
+  { code: 'AFILIADO004', hasCoupon: false,  },
+  { code: 'PARCEIRO02', hasCoupon: false,  },
+  { code: 'INDICACAO01', hasCoupon: false,  },
 ]
 
 export interface AffiliateCodeResponse {
@@ -19,7 +19,7 @@ export interface AffiliateCodeResponse {
   data: {
     hasCoupon: boolean
     affiliateCode: string
-    affiliateName?: string
+    // affiliateName?: string
   }
 }
 
@@ -51,7 +51,7 @@ export async function checkAffiliateCode(code: string): Promise<AffiliateCodeRes
       data: {
         hasCoupon: true,
         affiliateCode: affiliate.code,
-        affiliateName: affiliate.name
+        // affiliateName: affiliate.name
       }
     }
   }
@@ -61,7 +61,7 @@ export async function checkAffiliateCode(code: string): Promise<AffiliateCodeRes
     data: {
       hasCoupon: false,
       affiliateCode: affiliate.code,
-      affiliateName: affiliate.name
+      // affiliateName: affiliate.name
     }
   }
 }

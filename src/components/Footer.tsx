@@ -78,7 +78,6 @@
 import { Box, Container, Grid, Heading, Text, VStack, HStack, Link, Image } from '@chakra-ui/react'
 import { Instagram, Youtube } from 'lucide-react'
 import AnimatedSection from '../components/ui/animatedFooter'
-import Europe from "../../public/logos-institucionais.jpg"
 
  const Footer: React.FC = () => {
    return (
@@ -128,7 +127,7 @@ import Europe from "../../public/logos-institucionais.jpg"
                     rel="noopener noreferrer"
                   >
                     <Image
-                      src={Europe}
+                      src="/logos-institucionais.jpg"
                       alt="Norte 2020, Portugal 2030, União Europeia"
                       h={{ base: '30px', md: '62px' }}
                       w={{ base: '100%', md: '100%' }}

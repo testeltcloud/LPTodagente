@@ -202,6 +202,15 @@
 
   /* Fix iOS safe area - botão não fica atrás da barra de navegação */
   [data-scope="dialog"][data-part="footer"] {
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+    padding-bottom: max(1.5rem, calc(0.5rem + env(safe-area-inset-bottom))) !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    background: white !important;
+    z-index: 10 !important;
+  }
+
+  /* Garantir que o body tenha scroll suave no iOS */
+  [data-scope="dialog"][data-part="body"] {
+    -webkit-overflow-scrolling: touch !important;
   }
 }
