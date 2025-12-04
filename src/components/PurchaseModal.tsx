@@ -849,7 +849,8 @@ useEffect(() => {
           <Dialog.Footer
             flexDirection="column"
             gap={3}
-            py={5}
+            py={{ base: 3, md: 5 }}
+            pb={{ base: 'calc(1rem + env(safe-area-inset-bottom))', md: 5 }}
             px={6}
             borderTop="1px solid"
             borderColor="gray.200"

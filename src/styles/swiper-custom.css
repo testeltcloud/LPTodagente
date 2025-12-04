@@ -199,4 +199,9 @@
     padding: 0 !important;
     margin: 0 !important;
   }
+
+  /* Fix iOS safe area - botão não fica atrás da barra de navegação */
+  [data-scope="dialog"][data-part="footer"] {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+  }
 }
