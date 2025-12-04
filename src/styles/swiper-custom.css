@@ -170,6 +170,8 @@
 /* Paginação customizada para planos */
 .plans-swiper .swiper-pagination {
   bottom: -5px !important;
+  z-index: 9999;
+  position: relative; 
 }
 
 .plans-swiper .swiper-pagination-bullet {
