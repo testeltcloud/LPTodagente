@@ -20,7 +20,7 @@ import { toaster } from '../components/ui/toaster'
 import TermsModal from './Modal/TermsModal'
 import WarningModal from './Modal/WarningModal'
 import axios from 'axios'
-import { getAffiliateCodeFromURL, getSavedAffiliateCode, saveAffiliateCode, checkAffiliateCode, type AffiliateCodeResponse } from '../services/affiliateCode.service'
+import { getAffiliateCodeFromURL, checkAffiliateCode, type AffiliateCodeResponse } from '../services/affiliateCode.service'
 
 interface FormData {
   fullName: string
@@ -207,12 +207,10 @@ const [termsWereAccepted, setTermsWereAccepted] = useState(false);
     if (!isOpen) return
 
     const checkAffiliate = async () => {
-      // Primeiro verifica se há código na URL
+      // Verifica se há código na URL
       const urlCode = getAffiliateCodeFromURL()
 
       if (urlCode) {
-        // Salva o código no localStorage
-        saveAffiliateCode(urlCode)
         setIsCheckingAffiliate(true)
 
         try {
@@ -232,22 +230,9 @@ const [termsWereAccepted, setTermsWereAccepted] = useState(false);
         } finally {
           setIsCheckingAffiliate(false)
         }
-        return
-      }
-
-      // Se não houver código na URL, verifica no localStorage
-      const savedCode = getSavedAffiliateCode()
-      if (savedCode) {
-        setIsCheckingAffiliate(true)
-
-        try {
-          const response = await checkAffiliateCode(savedCode)
-          setAffiliateData(response)
-        } catch (error) {
-          console.error('Erro ao verificar código de afiliado salvo:', error)
-        } finally {
-          setIsCheckingAffiliate(false)
-        }
+      } else {
+        // Se não houver código na URL, limpa os dados do afiliado
+        setAffiliateData(null)
       }
     }
 
@@ -856,6 +841,7 @@ useEffect(() => {
             gap={3}
             pt={{ base: 4, md: 5 }}
             pb={{ base: 'max(1.5rem, env(safe-area-inset-bottom))', md: 5 }}
+            mb={{ base: '90px', md: 0 }}
             px={6}
             borderTop="1px solid"
             borderColor="gray.200"
