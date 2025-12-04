@@ -18,3 +18,14 @@ body {
 
 }
 
+.container {
+    width: 100% !important;
+}
+
+@media (min-width: 900px){
+  .container {
+      width: 100% !important;
+      max-width: 100% !important;
+  }
+  
+}

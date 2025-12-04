@@ -562,15 +562,15 @@ const DynamicPricing = () => {
             const isOutdoorEnvironment = (item?.plan?.category || '').toLowerCase() === 'outdoorenvironment';
             const isCycleMatch = item?.plan?.cycle === selectedCycle;
 
-            console.log(`Plano ${item?.plan?.description}:`, {
-                isActive,
-                isPlanActive,
-                isExternalId,
-                isOutdoorEnvironment,
-                isCycleMatch,
-                category: item?.plan?.category,
-                cycle: item?.plan?.cycle
-            });
+            // console.log(`Plano ${item?.plan?.description}:`, {
+            //     isActive,
+            //     isPlanActive,
+            //     isExternalId,
+            //     isOutdoorEnvironment,
+            //     isCycleMatch,
+            //     category: item?.plan?.category,
+            //     cycle: item?.plan?.cycle
+            // });
 
             return isActive && isPlanActive && isExternalId && isCycleMatch && isOutdoorEnvironment;
         }) || [];
@@ -611,13 +611,13 @@ const DynamicPricing = () => {
                     </p>
 
                     {/* Tabs de seleção */}
-                    <div className="flex justify-center mb-8 gap-4">
+                    <div className="flex justify-center mb-8 gap-3 md:gap-4 px-4">
                         <button
                             onClick={() => {
                                 // console.log('📱 Selecionando ciclo: mensal');
                                 setSelectedCycle('mensal');
                             }}
-                            className={`px-8 py-3 font-bold text-lg rounded-full transition-all ${
+                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${
                                 selectedCycle === 'mensal'
                                     ? 'bg-[#3B5CCC] text-white shadow-lg'
                                     : 'bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20'
@@ -630,7 +630,7 @@ const DynamicPricing = () => {
                                 // console.log('📱 Selecionando ciclo: anual');
                                 setSelectedCycle('anual');
                             }}
-                            className={`px-8 py-3 font-bold text-lg rounded-full transition-all ${
+                            className={`flex-1 md:flex-none px-6 md:px-8 py-3 md:py-3 font-bold text-base md:text-lg rounded-full transition-all max-w-[180px] md:max-w-none ${
                                 selectedCycle === 'anual'
                                     ? 'bg-[#3B5CCC] text-white shadow-lg'
                                     : 'bg-white text-[#3B5CCC] border-2 border-[#3B5CCC]/20'
@@ -671,11 +671,11 @@ const DynamicPricing = () => {
                                         slidesPerView: 1,
                                         spaceBetween: 20,
                                     },
-                                    768: {
+                                    900: {
                                         slidesPerView: 2,
                                         spaceBetween: 30,
                                     },
-                                    1024: {
+                                    1280: {
                                         slidesPerView: 3,
                                         spaceBetween: 40,
                                     },
